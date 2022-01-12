@@ -1,0 +1,18 @@
+COMANDOS SETUP
+
+Instalar Python no Linux:
+ - Já vem instalado
+
+Instalar venv no Linux:
+
+ sudo apt install python3.8-venv
+ 
+ # criar o ambiente virtual e ativa-lo
+ # criar
+ python3 -m venv venv
+ # ativar
+ source venv/bin/activate
+
+Instalar bibliotecas Django e Pillow
+ pip install django
+ pip install pillow
