@@ -35,4 +35,47 @@
         {% endif %}
     </div>
 </div>
+<!-- Modal Bootstrap: Filtros de Pesquisa -->
+<div class="modal fade"
+     id="exampleModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title titulo_filtrar" id="exampleModalLabel">FILTRAR</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'home' %}" method="GET">
+                    <label>Preço mínimo</label>
+                    <br>
+                    <input name="preco_minimo" class="form-control" type="number" placeholder="R$ 00">
+                    <br>
+                    <label>Preço máximo</label>
+                    <br>
+                    <input name="preco_maximo" class="form-control" type="number" placeholder="R$ 200000000">
+                    <br>
+                    <label>Cidade</label>
+                    <br>
+                    <select name="cidade" class="form-control">
+                        <option value="">Todas</option>
+                        {% for cidade in cidades %}
+                        <option value="{{cidade.id}}">{{cidade.nome}}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <label>Tipo</label>
+                    <br>
+                    <input name="tipo" type="checkbox" value="A"><label>&nbspApartamento&nbsp</label>
+                    <input name="tipo" type="checkbox" value="C"><label>&nbspCasa&nbsp</label>
+                    <br>
+                    <br>
+                    <input class="btn_filtrar_modal" type="submit" value="FILTRAR">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock  %}

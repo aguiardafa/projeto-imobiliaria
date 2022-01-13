@@ -49,3 +49,17 @@
     text-decoration: none;
     color: white;
 }
+
+.titulo_filtrar{
+    color:#30CD9E;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.btn_filtrar_modal{
+    border: none;
+    color: white;
+    background-color: #30CD9E;
+    font-weight: bold;
+    font-size: 20px;
+}

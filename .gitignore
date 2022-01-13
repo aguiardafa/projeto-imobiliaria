@@ -131,3 +131,6 @@ dmypy.json
 ### PyCharm IDEA ###
 .idea
 .idea/
+
+# Ignorar as imagens do upload de fotos dos imóveis
+media/img
