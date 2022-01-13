@@ -23,7 +23,7 @@
                 <img class="img_capa_imovel" src="{{imovel.imagens.all.0.img.url}}">
                 <div class="informacoes_imoveis">
                     <a class="a_none" href="{% url 'imovel' imovel.id %}">
-                        <h4 class="valor">R$ {{imovel.valor}}</h4>
+                        <h4 class="valor">R$ {{imovel.valor | floatformat:2}}</h4>
                     </a>
                     <p>{{imovel.rua}}, {{imovel.cidade}}</p>
                     <br>
