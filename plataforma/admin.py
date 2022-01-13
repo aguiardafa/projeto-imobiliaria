@@ -6,7 +6,7 @@ from .models import DiaVisita, Horario, Imovel, Cidade, Imagem, Visita
 # Register your models here.
 @admin.register(Imovel)
 class ImovelAdmin(admin.ModelAdmin):
-    list_display = ('rua', 'valor', 'quartos', 'tamanho', 'cidade', 'tipo')
+    list_display = ('tipo_imovel', 'rua', 'valor', 'quartos', 'tamanho', 'cidade', 'tipo')
     list_editable = ('valor', 'tipo')
     list_filter = ('cidade', 'tipo')
 

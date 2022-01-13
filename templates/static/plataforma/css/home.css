@@ -63,3 +63,46 @@
     font-weight: bold;
     font-size: 20px;
 }
+
+.titulo_especificacao{
+    color: #30CD9E;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 40px;
+}
+
+.especificacao{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.especificacao_endereco{
+    font-size: 25px;
+}
+
+.btn_agendar_visita{
+    border: none;
+    background-color: #30CD9E;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px 10px 5px 10px;
+}
+
+.div_possivel_interesse{
+    text-align: left;
+}
+
+.btn_agendar{
+    border: none;
+    background-color: #30CD9E;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px 10px 5px 10px;
+}
+
+.btn_agendar:hover{
+    text-decoration: none;
+    color: white;
+}

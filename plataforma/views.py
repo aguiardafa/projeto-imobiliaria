@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from plataforma.models import Imovel, Cidade
 
@@ -26,10 +26,19 @@ def home(request):
         # consulta no Banco de Dados os Imóveis conforme parâmetros do filtro
         imoveis = Imovel.objects.filter(valor__gte=preco_minimo) \
             .filter(valor__lte=preco_maximo) \
-            .filter(tipo_imovel__in=tipo)\
+            .filter(tipo_imovel__in=tipo) \
             .filter(cidade__in=cidade)
     else:
         # consulta no Banco de Dados todos os Imóveis cadastrados
         imoveis = Imovel.objects.all()
     return render(request, 'home.html',
                   {'imoveis': imoveis, 'cidades': cidades})
+
+
+def imovel(request, id):
+    # consulta no Banco de Dados o Imóvel conforme parâmetro recebido
+    imovel = get_object_or_404(Imovel, id=id)
+    # consulta Imóveis da mesma cidade e tipo como sugestões ao Usuário
+    sugestoes = Imovel.objects.filter(cidade=imovel.cidade).filter(tipo_imovel=imovel.tipo_imovel).exclude(id=id)[:2]
+    return render(request, 'imovel.html',
+                  {'imovel': imovel, 'sugestoes': sugestoes, 'id': id})
