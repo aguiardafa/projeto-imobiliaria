@@ -1,12 +1,14 @@
-from django.shortcuts import render, redirect
+from django.contrib import messages, auth
 from django.contrib.auth.models import User
-from django.contrib import messages
 from django.contrib.messages import constants
+from django.shortcuts import render, redirect
 
 
 # Create your views here.
 def cadastrar(request):
     if request.method == "GET":
+        if request.user.is_authenticated:
+            return redirect('/')
         return render(request, 'cadastrar.html')
     elif request.method == "POST":
         # captura os dados passados no formulário
@@ -37,4 +39,19 @@ def cadastrar(request):
 
 
 def logar(request):
-    return render(request, 'logar.html')
+    if request.method == "GET":
+        if request.user.is_authenticated:
+            return redirect('/')
+        return render(request, 'logar.html')
+    elif request.method == "POST":
+        # captura os dados passados no formulário
+        username = request.POST.get('username')
+        senha = request.POST.get('senha')
+        # consulta no Módulo Admin se existe usuário com os dados passados
+        user = auth.authenticate(username=username, password=senha)
+        if not user:
+            messages.add_message(request, constants.ERROR, 'Username ou senha inválidos')
+            return redirect('/auth/logar')
+        else:
+            auth.login(request, user)
+            return redirect('/')
