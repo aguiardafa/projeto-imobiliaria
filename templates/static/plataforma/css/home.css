@@ -1,0 +1,50 @@
+.bg_navbar{
+    background-color: #30CD9E;
+}
+
+.font_logo{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+    display: inline;
+}
+
+.card_imovel{
+    background-color: #30CD9E;
+    width: 20rem;
+    margin-top: 50px;
+    border-radius: 26px;
+}
+
+.img_capa_imovel{
+    width: 100%;
+    border-top-left-radius: 26px;
+    border-top-right-radius: 26px;
+}
+
+.informacoes_imoveis{
+    padding: 20px;
+    color: white;
+}
+
+.valor{
+    font-weight: bold;
+    border-bottom: 1px solid white;
+}
+
+.btn_filtrar{
+    border: none;
+    background-color: transparent;
+    border: 2px solid #30CD9E;
+    color: #30CD9E;
+    padding: 5px 10px 5px 10px;
+    font-weight: bold;
+}
+
+.a_none{
+    color: white;
+}
+
+.a_none:hover{
+    text-decoration: none;
+    color: white;
+}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'plataforma/css/home.css' %}">
+{% endblock  %}
+
+{% block 'titulo' %}Bem Vindo a IMOBI{% endblock %}
+
+{% block 'body' %}
+<div class="container">
+    <br>
+    <button type="button" class="btn_filtrar"
+            data-toggle="modal" data-target="#exampleModal">
+        FILTRAR
+    </button>
+    <div class="row">
+        {% if imoveis %}
+        {% for imovel in imoveis %}
+        <div class="col-md cont">
+            <div class="card_imovel">
+                <img class="img_capa_imovel" src="{{imovel.imagens.all.0.img.url}}">
+                <div class="informacoes_imoveis">
+                    <a class="a_none" href="">
+                        <h4 class="valor">R$ {{imovel.valor}}</h4>
+                    </a>
+                    <p>{{imovel.rua}}, {{imovel.cidade}}</p>
+                    <br>
+                    <img width="7%" src="{% static 'plataforma/img/heart.png' %}">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock  %}
