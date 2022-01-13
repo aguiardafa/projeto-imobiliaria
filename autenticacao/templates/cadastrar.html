@@ -36,6 +36,13 @@
                 <div class="area_cadastrar">
                     <form action="{% url 'cadastrar' %}" method="POST">{% csrf_token %}
                         <h2 class="titulo_area_cadastrar">Cadastre-se</h2>
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert {{message.tags}}">
+                                    {{message}}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                         <br>
                         <input name="username" class="input_cadastrar input_cadastrar_nome" type="text" placeholder="Username...">
                         <br>
