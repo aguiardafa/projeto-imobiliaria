@@ -1,10 +1,58 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <title>Logar</title>
-    </head>
-    <body>
-        <h1>Tela de login HTML</h1>
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'autenticacao/css/cadastrar.css' %}">
+{% endblock %}
+
+{% block 'titulo' %}Acesse o IMOBI{% endblock %}
+
+{% block 'body' %}
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Barra Lateral Esquerda da Página -->
+            <div class="col-md-3 sidebar">
+                <div class="logo_sidebar">
+                    <h2 class="logo">
+                        <img class="img_logo_sidebar" src="{% static 'autenticacao/img/logo.png' %}">IMOBI
+                    </h2>
+                </div>
+                <div class="corpo_sidebar">
+                    <div>
+                        <h2 class="titulo cor_branca">Logar</h2>
+                    </div>
+                    <div>
+                        <p class="cor_branca descricao">As melhores casas</p>
+                        <p style="margin-top:-20px" class="cor_branca descricao">Nos melhores preços</p>
+                        <br>
+                        <br>
+                        <a class="btn_logar" href="{% url 'cadastrar' %}">Cadastre-se</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Corpo da Página -->
+            <div class="col-md-9">
+                <div class="area_cadastrar">
+                    <form action="{% url 'logar' %}" method="POST">{% csrf_token %}
+                        <h2 class="titulo_area_cadastrar">Logar</h2>
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert {{message.tags}}">
+                                    {{message}}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <br>
+                        <input name="username" class="input_cadastrar input_cadastrar_nome" type="text" placeholder="Username...">
+                        <br>
+                        <br>
+                        <input name="senha" class="input_cadastrar input_cadastrar_senha" type="password" placeholder="Senha...">
+                        <br>
+                        <input class="btn_cadastrar" type="submit" value="  Logar  ">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
