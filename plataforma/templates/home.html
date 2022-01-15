@@ -25,8 +25,19 @@
                     <a class="a_none" href="{% url 'imovel' imovel.id %}">
                         <h4 class="valor">R$ {{imovel.valor | floatformat:2}}</h4>
                     </a>
+                    <div style="display: block;">
+                        <span>
+                            {% if imovel.tipo_imovel == "A" %}<b>Apartamento </b>{% endif %}
+                            {% if imovel.tipo_imovel == "C" %}<b>Casa </b>{% endif %}
+                        </span>
+                        {% if imovel.tipo == "A" %}
+                            <span class="badge badge-info" style="float: right;"><b>Para Alugar</b></span>
+                        {% endif %}
+                        {% if imovel.tipo == "V" %}
+                            <span class="badge badge-secondary" style="float: right;"><b>Para Comprar</b></span>
+                        {% endif %}
+                    </div>
                     <p>{{imovel.rua}}, {{imovel.cidade}}</p>
-                    <br>
                     <img width="15%" src="{% static 'plataforma/img/heart.png' %}">
                 </div>
             </div>

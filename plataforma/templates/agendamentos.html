@@ -50,10 +50,10 @@
             </td>
             <td class="td_agendamentos">
                 {% if visita.imovel.tipo == "A" %}
-                <b>Alugar</b>
+                    <span class="badge badge-info"><b>Alugar</b></span>
                 {% endif %}
                 {% if visita.imovel.tipo == "V" %}
-                <b>Comprar</b>
+                    <span class="badge badge-secondary"><b>Comprar</b></span>
                 {% endif %}
             </td>
             <td class="td_agendamentos">
@@ -64,7 +64,7 @@
             <td class="td_agendamentos">{{visita.dia}}/{{visita.horario}}</td>
             <td class="td_agendamentos">
                 {% if visita.status == "A" %}
-                <span class="badge badge-info">Agendado</span>
+                <span class="badge badge-primary">Agendado</span>
                 {% endif %}
                 {% if visita.status == "F" %}
                 <span class="badge badge-success">Finalizado</span>

@@ -23,10 +23,10 @@
         </h3>
     </div>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
+        <div class="carousel-inner" >
             {% for img in imovel.imagens.all %}
             <div class="carousel-item {% if forloop.first %} active {% endif %}">
-                <img class="d-block w-100" src="{{img}}" alt="First slide">
+                <img class="d-block w-100" style="max-height: 40rem;" src="{{img}}" alt="First slide">
             </div>
             {% endfor %}
         </div>
@@ -42,14 +42,12 @@
     <div class="row">
         <div class="col-md" style="display: flex;">
             <h3 class="titulo_especificacao_tipo">
-                <span class="badge badge-info">
                 {% if imovel.tipo == "A" %}
-                <b>Para Alugar</b>
+                    <span class="badge badge-info"><b>Para Alugar</b></span>
                 {% endif %}
                 {% if imovel.tipo == "V" %}
-                <b>Para Comprar</b>
+                    <span class="badge badge-secondary"><b>Para Comprar</b></span>
                 {% endif %}
-                </span>
             </h3>
         </div>
         <div class="col-md">
@@ -94,10 +92,22 @@
                 <div class="card_imovel">
                     <img class="img_capa_imovel" src="{{sugestao.imagens.all.0.img.url}}">
                     <div class="informacoes_imoveis">
-                        <a class="a_none" href="{% url 'imovel' sugestao.id %}"><h4 class="valor">R$
-                            {{sugestao.valor | floatformat:2}}</h4></a>
+                        <a class="a_none" href="{% url 'imovel' sugestao.id %}">
+                            <h4 class="valor">R$ {{sugestao.valor | floatformat:2}}</h4>
+                        </a>
+                        <div style="display: block;">
+                            <span>
+                                {% if sugestao.tipo_imovel == "A" %}<b>Apartamento </b>{% endif %}
+                                {% if sugestao.tipo_imovel == "C" %}<b>Casa </b>{% endif %}
+                            </span>
+                            {% if sugestao.tipo == "A" %}
+                                <span class="badge badge-info" style="float: right;"><b>Para Alugar</b></span>
+                            {% endif %}
+                            {% if sugestao.tipo == "V" %}
+                                <span class="badge badge-secondary" style="float: right;"><b>Para Comprar</b></span>
+                            {% endif %}
+                        </div>
                         <p>{{sugestao.rua}}, {{sugestao.cidade}}</p>
-                        <br>
                         <img width="15%" src="{% static 'plataforma/img/heart.png' %}">
                     </div>
                 </div>
