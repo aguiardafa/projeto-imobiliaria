@@ -6,10 +6,22 @@
 <link rel="stylesheet" href="{% static 'plataforma/css/home.css' %}">
 {% endblock  %}
 
+{% block 'titulo' %}IMOBI - {% if imovel.tipo_imovel == "A" %}Apartamento{% endif %}{% if imovel.tipo_imovel == "C" %}Casa{% endif %} {{imovel.rua}}{% endblock %}
+
 {% block 'body' %}
 <div style="text-align: center" class="container">
     <br>
-    <br>
+    <div style="text-align: left">
+        <h3 class="titulo_especificacao">
+            {% if imovel.tipo_imovel == "A" %}
+            <b>Apartamento </b>
+            {% endif %}
+            {% if imovel.tipo_imovel == "C" %}
+            <b>Casa </b>
+            {% endif %}
+            {{imovel.rua}}
+        </h3>
+    </div>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             {% for img in imovel.imagens.all %}
@@ -28,6 +40,18 @@
         </a>
     </div>
     <div class="row">
+        <div class="col-md" style="display: flex;">
+            <h3 class="titulo_especificacao_tipo">
+                <span class="badge badge-info">
+                {% if imovel.tipo == "A" %}
+                <b>Para Alugar</b>
+                {% endif %}
+                {% if imovel.tipo == "V" %}
+                <b>Para Comprar</b>
+                {% endif %}
+                </span>
+            </h3>
+        </div>
         <div class="col-md">
             <h3 class="titulo_especificacao">Valor</h3>
             <p class="especificacao">R$ {{imovel.valor | floatformat:2}}</p>
@@ -41,29 +65,28 @@
             <p class="especificacao">{{imovel.tamanho | floatformat:2}} m²</p>
         </div>
     </div>
-    <br>
     <div style="text-align: left">
         <h3 class="titulo_especificacao">Endereço</h3>
         <p class="especificacao_endereco">{{imovel.rua}}, {{imovel.cidade }}</p>
     </div>
-    <br>
     <div style="text-align: justify">
         <h3 class="titulo_especificacao">Descricao</h3>
         <p class="especificacao_endereco">{{imovel.descricao}}</p>
-        <br>
         <button class="btn_agendar_visita" data-toggle="modal" data-target="#exampleModal">AGENDAR VISITA</button>
         <br>
         <br>
     </div>
     <hr style="border: 1px solid black">
-    <br>
     <div class="div_possivel_interesse">
         <h3 class="titulo_especificacao">Talvez você se interesse por</h3>
         <div class="row">
             {% if not sugestoes %}
             <div style="text-align: center; width: 100%">
                 <p class="especificacao">Sem Sugestões</p>
-                <p class="especificacao_endereco">Não existem outros imóveis com as mesmas características.</p>
+                <p class="especificacao_endereco">
+                    Não existem {% if imovel.tipo_imovel == "A" %}outros <b>Apartamentos</b>{% endif %}
+                    {% if imovel.tipo_imovel == "C" %}outras <b>Casas</b>{% endif %} na mesma cidade.
+                </p>
             </div>
             {% endif %}
             {% for sugestao in sugestoes %}
@@ -115,7 +138,6 @@
                     <input class="btn_agendar" type="submit" value="AGENDAR">
                 </form>
             </div>
-
         </div>
     </div>
 </div>
