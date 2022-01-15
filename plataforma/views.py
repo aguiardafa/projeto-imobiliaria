@@ -59,3 +59,8 @@ def agendar_visitas(request):
     )
     visita.save()
     return redirect('/agendamentos')
+
+
+def agendamentos(request):
+    visitas = Visita.objects.filter(usuario=request.user)
+    return render(request, "agendamentos.html", {'visitas': visitas, 'total_visitas': visitas.count()})

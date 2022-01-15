@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'plataforma/css/home.css' %}">
+{% endblock  %}
+
+{% block 'titulo' %}IMOBI - Meus Agendamentos{% endblock %}
+
+{% block 'body' %}
+<div class="container">
+    <br>
+    <div style="text-align: left">
+        <h3 class="titulo_especificacao">Meus Agendamentos</h3>
+    </div>
+    <br>
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col" class="td_agendamentos"><img width="40" src="{% static 'favicon.png' %}"></th>
+            <th scope="col" class="td_agendamentos">Imóvel</th>
+            <th scope="col" class="td_agendamentos">Interesse</th>
+            <th scope="col" class="td_agendamentos">Endereços</th>
+            <th scope="col" class="td_agendamentos">Dia/Hora</th>
+            <th scope="col" class="td_agendamentos">Status</th>
+            <th scope="col" class="td_agendamentos">Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if not visitas %}
+        <tr>
+            <td COLSPAN="7" class="td_agendamentos">
+                <p class="especificacao">Não existem Visitas Agendadas para o Usuário</p>
+            </td>
+        </tr>
+        {% endif %}
+        {% for visita in visitas %}
+        <tr>
+            <th scope="row" class="td_agendamentos">
+                <img width="80" height="60" src="{{visita.imovel.imagens.all.0}}">
+            </th>
+            <td class="td_agendamentos">
+                {% if visita.imovel.tipo_imovel == "A" %}
+                <b>Apartamento</b>
+                {% endif %}
+                {% if visita.imovel.tipo_imovel == "C" %}
+                <b>Casa</b>
+                {% endif %}
+            </td>
+            <td class="td_agendamentos">
+                {% if visita.imovel.tipo == "A" %}
+                <b>Alugar</b>
+                {% endif %}
+                {% if visita.imovel.tipo == "V" %}
+                <b>Comprar</b>
+                {% endif %}
+            </td>
+            <td class="td_agendamentos">
+                <a class="a_agendamentos" href="{% url 'imovel' visita.imovel.id %}">
+                    {{visita.imovel.rua}}, {{visita.imovel.cidade}}
+                </a>
+            </td>
+            <td class="td_agendamentos">{{visita.dia}}/{{visita.horario}}</td>
+            <td class="td_agendamentos">
+                {% if visita.status == "A" %}
+                <span class="badge badge-info">Agendado</span>
+                {% endif %}
+                {% if visita.status == "F" %}
+                <span class="badge badge-success">Finalizado</span>
+                {% endif %}
+                {% if visita.status == "C" %}
+                <span class="badge badge-danger">Cancelado</span>
+                {% endif %}
+            </td>
+            <td class="td_agendamentos">
+                <a href="" class="btn btn-danger {% if not visita.status == 'A' %} disabled {% endif %}">CANCELAR</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot class="thead-dark">
+        <tr>
+            <th scope="row" colspan="7" class="td_agendamentos">
+                <b>Total de Agendamentos: {{ total_visitas }}</b>
+            </th>
+        </tr>
+        </tfoot>
+    </table>
+    <br>
+</div>
+{% endblock  %}

@@ -71,6 +71,14 @@
     font-size: 40px;
 }
 
+.titulo_especificacao_tipo{
+    align-self: center;
+    margin-inline: auto;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 40px;
+}
+
 .especificacao{
     font-size: 30px;
     font-weight: bold;
@@ -105,4 +113,18 @@
 .btn_agendar:hover{
     text-decoration: none;
     color: white;
+}
+
+.a_agendamentos{
+    color: #30CD9E;
+}
+
+.a_agendamentos:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.td_agendamentos{
+    text-align: center;
+    vertical-align: middle !important;
 }
