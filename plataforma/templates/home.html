@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{% static 'plataforma/css/home.css' %}">
 {% endblock  %}
 
-{% block 'titulo' %}Bem Vindo a IMOBI{% endblock %}
+{% block 'titulo' %}IMOBI - Seja Bem Vindo{% endblock %}
 
 {% block 'body' %}
 <div class="container">
@@ -69,8 +69,13 @@
                     <br>
                     <label>Tipo</label>
                     <br>
-                    <input name="tipo" type="checkbox" value="A"><label>&nbspApartamento&nbsp</label>
-                    <input name="tipo" type="checkbox" value="C"><label>&nbspCasa&nbsp</label>
+                    <input name="tipo_imovel" type="checkbox" value="A"><label>&nbspApartamento&nbsp</label>
+                    <input name="tipo_imovel" type="checkbox" value="C"><label>&nbspCasa&nbsp</label>
+                    <br>
+                    <label>Interesse</label>
+                    <br>
+                    <input name="tipo" type="checkbox" value="A"><label>&nbspAlugar&nbsp</label>
+                    <input name="tipo" type="checkbox" value="V"><label>&nbspComprar&nbsp</label>
                     <br>
                     <br>
                     <input class="btn_filtrar_modal" type="submit" value="FILTRAR">

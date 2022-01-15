@@ -13,20 +13,24 @@ def home(request):
     preco_minimo = request.GET.get('preco_minimo')
     preco_maximo = request.GET.get('preco_maximo')
     cidade = request.GET.get('cidade')
+    tipo_imovel = request.GET.getlist('tipo_imovel')
     tipo = request.GET.getlist('tipo')
-    if preco_minimo or preco_maximo or cidade or tipo:
+    if preco_minimo or preco_maximo or cidade or tipo_imovel or tipo:
         if not preco_minimo:
             preco_minimo = 0
         if not preco_maximo:
             preco_maximo = 999999999
+        if not tipo_imovel:
+            tipo_imovel = ['A', 'C']
         if not tipo:
-            tipo = ['A', 'C']
+            tipo = ['A', 'V']
         if not cidade:
             cidade = cidades
         # consulta no Banco de Dados os Imóveis conforme parâmetros do filtro
         imoveis = Imovel.objects.filter(valor__gte=preco_minimo) \
             .filter(valor__lte=preco_maximo) \
-            .filter(tipo_imovel__in=tipo) \
+            .filter(tipo_imovel__in=tipo_imovel) \
+            .filter(tipo__in=tipo) \
             .filter(cidade__in=cidade)
     else:
         # consulta no Banco de Dados todos os Imóveis cadastrados
