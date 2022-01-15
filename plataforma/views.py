@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
-from plataforma.models import Imovel, Cidade
+from plataforma.models import Imovel, Cidade, Visita
 
 
 # Create your views here.
@@ -42,3 +42,20 @@ def imovel(request, id):
     sugestoes = Imovel.objects.filter(cidade=imovel.cidade).filter(tipo_imovel=imovel.tipo_imovel).exclude(id=id)[:2]
     return render(request, 'imovel.html',
                   {'imovel': imovel, 'sugestoes': sugestoes, 'id': id})
+
+
+def agendar_visitas(request):
+    # captura os dados passados no formulário
+    user = request.user
+    dia = request.POST.get('dia')
+    horario = request.POST.get('horario')
+    id_imovel = request.POST.get('id_imovel')
+    # cadastrar Visita no Banco de Dados
+    visita = Visita(
+        imovel_id=id_imovel,
+        usuario=user,
+        dia=dia,
+        horario=horario
+    )
+    visita.save()
+    return redirect('/agendamentos')

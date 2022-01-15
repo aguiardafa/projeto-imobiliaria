@@ -6,4 +6,5 @@ from plataforma import views
 urlpatterns = [
     path('', views.home, name="home"),
     path('imovel/<str:id>', views.imovel, name="imovel"),
+    path('agendar_visitas', views.agendar_visitas, name="agendar_visitas"),
 ]
