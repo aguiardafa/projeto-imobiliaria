@@ -74,7 +74,8 @@
                 {% endif %}
             </td>
             <td class="td_agendamentos">
-                <a href="" class="btn btn-danger {% if not visita.status == 'A' %} disabled {% endif %}">CANCELAR</a>
+                <a href="{% url 'cancelar_agendamento' visita.id %}"
+                   class="btn btn-danger {% if not visita.status == 'A' %} disabled {% endif %}">CANCELAR</a>
             </td>
         </tr>
         {% endfor %}

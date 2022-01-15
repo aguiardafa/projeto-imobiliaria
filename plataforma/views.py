@@ -62,5 +62,15 @@ def agendar_visitas(request):
 
 
 def agendamentos(request):
+    # consulta no Banco de Dados as visitas do usuário que está acessando
     visitas = Visita.objects.filter(usuario=request.user)
     return render(request, "agendamentos.html", {'visitas': visitas, 'total_visitas': visitas.count()})
+
+
+def cancelar_agendamento(request, id):
+    # consulta no Banco de Dados o Imóvel conforme parâmetro recebido
+    visitas = get_object_or_404(Visita, id=id)
+    # atualiza status para cancelado e salva no Banco de Dados
+    visitas.status = "C"
+    visitas.save()
+    return redirect('/agendamentos')
