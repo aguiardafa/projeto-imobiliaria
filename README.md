@@ -11,7 +11,7 @@ Projeto de um `Sistema Web para Imobiliárias`, denominado <b>IMOBI</b>, impleme
 <a href="#backers" alt="Language Portuguese">
 <img src="https://img.shields.io/badge/language-Portuguese-yellow" /></a>
 
-## IMOBI - Sistema para Imobiliárias:
+## IMOBI — Sistema para Imobiliárias:
 
 Trata-se de uma aplicação web completa para <b>gerenciamento de locação de casas</b>, através do cadastro detalhado dos imóveis para locação, que inclui galeria de fotos do imóvel, funcionalidade de pesquisa de imóveis disponíveis e agendamento e controle de visitas. Ainda, possui um Módulo de Administração dos Cadastros e de Autenticação de Usuários.
 
@@ -42,10 +42,10 @@ Antes de começar, você vai precisar ter instalado em sua máquina os seguintes
 
 As seguintes tecnologias/ferramentas foram utilizadas na construção do projeto:
 - [pip](https://pip.pypa.io/)
-- [Css](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
-- [Html](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
+- [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+- [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
 - [Bootstrap](https://getbootstrap.com/)
-- .....
+- [SQLite](https://www.sqlite.org/index.html)
 
 ## Sobre evento PyStack Week 2.0
 
@@ -53,7 +53,17 @@ As seguintes tecnologias/ferramentas foram utilizadas na construção do projeto
 
 O evento possui uma apresentação dos conceitos básicos da linguagem Python, aborda os procedimentos de instalação e configuração do Django, a criação da área administrativa e como implementar a autenticação dos usuários. Além de conduzir, de forma prática, todo o desenvolvimento da aplicação web proposta.
 
+Tópicos abordados na implementação da aplicação proposta:
+- Autenticação de usuário
+- Criação de App, Models, Rotas e Views
+- Conexão com banco de dados
+- Manipulação de Dados (Cadastrar, atualizar, listar)
+- Validações e Filtros
+- Upload de imagens
+
 Link para o evento [PyStack Week 2.0](https://pythonando.com.br/evento/)
+
+<p align="center"><img alt="Vídeo do Projeto" id="video1" title="#VideoProjeto" width="450px" height="450px" src="https://raw.githubusercontent.com/aguiardafa/projeto-imobiliaria/main/.github/Video1.gif" /></p>
 
 ## 👨‍💻Autor
 
